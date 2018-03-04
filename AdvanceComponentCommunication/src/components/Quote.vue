@@ -2,17 +2,17 @@
   <div>
     <div class="title">
       <slot name="title"></slot>
+      <span style="color: #ccc"><slot name="subtitle">The Subtitle</slot></span>
     </div>
     <hr>
     <div>
-      <slot name="content"></slot>
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>
 
 <style scoped>
@@ -29,7 +29,7 @@ h2 {
 }
 
 .title {
-  font-style: italic
+  font-style: italic;
 }
 </style>
 
