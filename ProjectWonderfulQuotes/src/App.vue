@@ -1,13 +1,22 @@
 <template>
     <div class="container">
+      <Header :quoteCount="quotes.length" :maxQuotes="maxQuotes"></Header>
       <NewQuote @QuoteAdded="newQuote"></NewQuote>
-      <QuoteGrid :quotes="quotes"></QuoteGrid>
+      <QuoteGrid :quotes="quotes" @QuoteDeleted="deleteQuote"></QuoteGrid>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <div class="alert alert-info">
+            Info: Click on a Quote to delete it!
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 
 <script>
 import QuoteGrid from "./components/QuoteGrid.vue";
 import NewQuote from "./components/NewQuote.vue";
+import Header from "./components/Header.vue";
 
 export default {
   data: function() {
@@ -19,11 +28,15 @@ export default {
   methods: {
     newQuote(quote) {
       this.quotes.push(quote);
+    },
+    deleteQuote(index) {
+      this.quotes.splice(index, 1);
     }
   },
   components: {
     QuoteGrid: QuoteGrid,
-    NewQuote: NewQuote
+    NewQuote: NewQuote,
+    Header: Header
   }
 };
 </script>
