@@ -6,14 +6,14 @@
 </template>
 
 <script>
-    export default {
-        methods: {
-            increment() {
-                this.$store.state.counter++;
-            },
-            decrement() {
-                this.$store.state.counter--;
-            }
-        }
-    }
+import { mapMutations } from 'vuex';
+
+export default {
+  methods: {
+    ...mapMutations([
+        'increment',
+        'decrement'
+    ])
+  }
+};
 </script>
