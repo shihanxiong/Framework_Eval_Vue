@@ -3,7 +3,11 @@
 </template>
 
 <script>
-    export default {
-        props: ['counter']
+export default {
+  computed: {
+    counter() {
+      return this.$store.getters.doubleCounter;
     }
+  }
+};
 </script>
