@@ -12,19 +12,19 @@
 </template>
 
 <script>
-    import Counter from './components/Counter.vue';
-    import Result from './components/Result.vue';
+import Counter from "./components/Counter.vue";
+import Result from "./components/Result.vue";
 
-    export default {
-        data() {
-            return {
-                counter: 0
-            }
-        },
-        components: {
-            appCounter: Counter,
-            appResult: Result,
-        }
-    }
+export default {
+  data() {
+    return {
+      counter: 0
+    };
+  },
+  components: {
+    appCounter: Counter,
+    appResult: Result
+  }
+};
 </script>
 
