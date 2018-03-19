@@ -61,13 +61,13 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
                     <label for="male">
-                        <input
+                        <input	v-model="gender"
                                 type="radio"
                                 id="male"
                                 value="Male"> Male
                     </label>
                     <label for="female">
-                        <input
+                        <input	v-model="gender"
                                 type="radio"
                                 id="female"
                                 value="Female"> Female
@@ -77,10 +77,10 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
                     <label for="priority">Priority</label>
-                    <select
+                    <select v-model="selectedPriority"
                             id="priority"
                             class="form-control">
-                        <option></option>
+                        <option v-for="priority in priorities">{{ priority }}</option>
                     </select>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                         <ul>
                             <li v-for="item in sendMail">{{ item }}</li>
                         </ul>
-                        <p>Gender:</p>
+                        <p>Gender: {{ gender }}</p>
                         <p>Priority:</p>
                         <p>Switched:</p>
                     </div>
@@ -129,7 +129,10 @@ export default {
         age: 27
       },
       message: "A new text",
-			sendMail: []
+      sendMail: [],
+      gender: "Male",
+      selectedPriority: "High",
+      priorities: ["High", "Medium", "Low"]
     };
   }
 };
