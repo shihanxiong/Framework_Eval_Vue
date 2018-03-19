@@ -7,21 +7,21 @@
                     <hr>
                     <div class="form-group">
                         <label for="email">Mail</label>
-                        <input
+                        <input  v-model="userData.email"
                                 type="text"
                                 id="email"
                                 class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input
+                        <input	v-model.lazy="userData.password"
                                 type="password"
                                 id="password"
                                 class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
-                        <input
+                        <input	v-model.lazy.number="userData.age"
                                 type="number"
                                 id="age"
                                 class="form-control">
@@ -33,7 +33,7 @@
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
                     <label for="message">Message</label><br>
                     <!-- Interpolation between <textarea>{{ test }}</textarea> doesn't work!-->
-                    <textarea
+                    <textarea v-model="message"
                             id="message"
                             rows="5"
                             class="form-control"></textarea>
@@ -43,13 +43,13 @@
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                     <div class="form-group">
                         <label for="sendmail">
-                            <input
+                            <input	v-model="sendMail"
                                     type="checkbox"
                                     id="sendmail"
                                     value="SendMail"> Send Mail
                         </label>
                         <label for="sendInfomail">
-                            <input
+                            <input	v-model="sendMail"
                                     type="checkbox"
                                     id="sendInfomail"
                                     value="SendInfoMail"> Send Infomail
@@ -101,13 +101,13 @@
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Mail:</p>
-                        <p>Password:</p>
-                        <p>Age:</p>
-                        <p>Message: </p>
+                        <p>Mail: {{ userData.email }}</p>
+                        <p>Password: {{ userData.password }}</p>
+                        <p>Age: {{ userData.age }}</p>
+                        <p style="white-space: pre">Message: {{ message }}</p>
                         <p><strong>Send Mail?</strong></p>
                         <ul>
-                            <li></li>
+                            <li v-for="item in sendMail">{{ item }}</li>
                         </ul>
                         <p>Gender:</p>
                         <p>Priority:</p>
@@ -120,8 +120,19 @@
 </template>
 
 <script>
-    export default {
-    }
+export default {
+  data() {
+    return {
+      userData: {
+        email: "",
+        password: "",
+        age: 27
+      },
+      message: "A new text",
+			sendMail: []
+    };
+  }
+};
 </script>
 
 <style>
